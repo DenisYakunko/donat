@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Перевод донатов</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            display: flex;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 40px;
+            max-width: 600px;
+        }
+        
+        .title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            color: #2c3e50;
+        }
+        
+        .section {
+            margin-bottom: 30px;
+        }
+        
+        .bank-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .bank-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-right: 15px;
+            color: #2c3e50;
+        }
+        
+        .copy-button {
+            background: #4a6cf7;
+            color: white;
+            border: none;
+            padding: 8px 15px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: background 0.3s ease;
+            white-space: nowrap;
+        }
+        
+        .copy-button:hover {
+            background: #3a5ce5;
+        }
+        
+        .card-number, .phone-number-styled {
+            font-size: 1.8rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            background: white;
+            padding: 20px 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+            display: inline-block;
+            color: #2c3e50;
+            margin-bottom: 15px;
+            word-break: break-all;
+        }
+        
+        .phone-info {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .phone-number {
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-right: 15px;
+            color: #2c3e50;
+        }
+        
+        .banks {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .image-container {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .image-placeholder {
+            width: 100%;
+            max-width: 500px;
+            height: 300px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+            object-fit: cover;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+            }
+            
+            .content {
+                padding: 30px 20px;
+                order: 2;
+            }
+            
+            .image-container {
+                order: 1;
+                margin-bottom: 30px;
+            }
+            
+            .title {
+                font-size: 2rem;
+                text-align: center;
+            }
+            
+            .bank-info, .phone-info {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            
+            .bank-name, .phone-number {
+                margin-bottom: 10px;
+            }
+            
+            .card-number, .phone-number-styled {
+                font-size: 1.5rem;
+                padding: 15px 20px;
+            }
+            
+            .phone-number {
+                font-size: 1.3rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .content {
+                padding: 20px 15px;
+            }
+            
+            .title {
+                font-size: 1.8rem;
+            }
+            
+            .card-number, .phone-number-styled {
+                font-size: 1.3rem;
+                letter-spacing: 1px;
+                padding: 15px;
+            }
+            
+            .bank-name, .phone-number {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="title">Варианты перевода донатов:</h1>
+            
+            <div class="section">
+                <div class="bank-info">
+                    <div class="bank-name">Т-Банк</div>
+                    <button class="copy-button" onclick="copyToClipboard('2200700119494101', this)">Копировать</button>
+                </div>
+                <div class="card-number">2200 7001 1949 4101</div>
+            </div>
+            
+            <div class="section">
+                <div class="phone-info">
+                    <div class="phone-number">Телефон:</div>
+                    <button class="copy-button" onclick="copyToClipboard('+79044109658', this)">Копировать</button>
+                </div>
+                <div class="phone-number-styled">+7 904 410 96 58</div>
+                <div class="banks">Сбер, Т-Банк</div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="image.jpg" 
+                 alt="Платежная система" 
+                 class="image-placeholder"
+                 onerror="this.src='https://placehold.co/500x300/6e8efb/ffffff?text=Платежная+система'">
+        </div>
+    </div>
+
+    <script>
+        function copyToClipboard(text, button) {
+            navigator.clipboard.writeText(text).then(() => {
+                const originalText = button.textContent;
+                button.textContent = 'Скопировано!';
+                setTimeout(() => {
+                    button.textContent = originalText;
+                }, 2000);
+            }).catch(err => {
+                console.error('Ошибка копирования: ', err);
+            });
+        }
+    </script>
+</body>
+</html>
