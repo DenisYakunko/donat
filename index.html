@@ -122,7 +122,7 @@
             height: 300px;
             border-radius: 15px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            object-fit: cover;
+            object-fit: contain;
         }
         
         @media (max-width: 768px) {
@@ -155,12 +155,17 @@
             }
             
             .card-number, .phone-number-styled {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
                 padding: 15px 20px;
+                letter-spacing: 1px;
             }
             
             .phone-number {
                 font-size: 1.3rem;
+            }
+            
+            .image-placeholder {
+                height: 200px;
             }
         }
         
@@ -174,13 +179,22 @@
             }
             
             .card-number, .phone-number-styled {
-                font-size: 1.3rem;
-                letter-spacing: 1px;
-                padding: 15px;
+                font-size: 1.2rem;
+                letter-spacing: 0.5px;
+                padding: 12px 15px;
             }
             
             .bank-name, .phone-number {
                 font-size: 1.2rem;
+            }
+            
+            .copy-button {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+            
+            .image-placeholder {
+                height: 150px;
             }
         }
     </style>
